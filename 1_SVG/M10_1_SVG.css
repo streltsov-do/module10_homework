@@ -1,0 +1,14 @@
+.btn-change{
+    height: 50px;
+    width: 300px;
+    font-size: 30px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.btn-change-icon{
+    height: 30px;
+    width: 30px;
+    font-size: 28px;
+}
