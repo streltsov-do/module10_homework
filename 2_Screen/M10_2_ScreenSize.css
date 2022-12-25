@@ -1,0 +1,12 @@
+/* 
+Сверстайте кнопку, клик на которую будет выводить данные о размерах экрана с помощью alert.  
+ */
+
+.btn-view{
+    height: 50px;
+    width: 300px;
+    font-size: 15px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
