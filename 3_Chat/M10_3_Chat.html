@@ -1,0 +1,56 @@
+<!-- 
+1. Реализовать чат на основе эхо-сервера wss://echo-ws-service.herokuapp.com.
+Интерфейс состоит из input, куда вводится текст сообщения, и кнопки «Отправить».
+
+При клике на кнопку «Отправить» сообщение должно появляться в окне переписки.
+
+Эхо-сервер будет отвечать вам тем же сообщением, его также необходимо выводить в чат:
+
+2. Добавить в чат механизм отправки гео-локации:
+При клике на кнопку «Гео-локация» необходимо отправить данные серверу 
+и в чат вывести ссылку на https://www.openstreetmap.org/ с вашей гео-локацией. 
+Сообщение, которое отправит обратно эхо-сервер, не выводить.
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="M10_3_Chat.css">
+    <title>M10 Chat</title>
+</head>
+
+<body>
+    <div class="control">
+        <input class="input-text" type="text" placeholder="Здесь вводится текст сообщения">
+        <button class="btn btn-send">
+            Отправить
+        </button>
+        <button class="btn btn-geo">
+            Геолокация
+        </button>
+    </div>
+    
+    <!-- <canvas id="canvas" width="430px" height="600px">
+
+    </canvas> -->
+
+    <div class="div-chat">
+        
+    </div>
+    
+    <button class="btn btn2 btn-close-wss">
+        Отрубить сокет
+    </button>
+    
+    <script src="M10_3_Chat.js"> 
+       
+    </script>
+    <script> 
+        window.onload = websocketSendLoad;
+    </script>
+</body>
+
+</html>

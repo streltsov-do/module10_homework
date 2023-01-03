@@ -1,0 +1,60 @@
+/* 
+1. Реализовать чат на основе эхо-сервера wss://echo-ws-service.herokuapp.com.
+Интерфейс состоит из input, куда вводится текст сообщения, и кнопки «Отправить».
+
+При клике на кнопку «Отправить» сообщение должно появляться в окне переписки.
+
+Эхо-сервер будет отвечать вам тем же сообщением, его также необходимо выводить в чат:
+
+2. Добавить в чат механизм отправки гео-локации:
+При клике на кнопку «Гео-локация» необходимо отправить данные серверу 
+и в чат вывести ссылку на https://www.openstreetmap.org/ с вашей гео-локацией. 
+Сообщение, которое отправит обратно эхо-сервер, не выводить.
+ */
+
+body *{
+    box-sizing: border-box;
+}
+
+.input-text{
+    
+    width: 220px;
+}
+
+.btn{
+    height: 30px;
+    width: 100px;
+    font-size: 15px;
+    display: flex;
+    background-color: rgb(115, 16, 145);
+    color:rgb(241, 215, 220);
+    justify-content: space-around;
+    align-items: center;
+}
+.btn2{
+    width: 430px;
+}
+
+.btn:hover{
+    font-size: 17px;
+    background-color: rgb(155, 74, 180);
+    /* background-color: rgb(189, 252, 247); */
+    /* color:rgb(241, 215, 220); */
+}
+
+.control{
+    width: 430px;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+.div-chat{
+    width: 430px;
+    height: 600px;
+    padding: 10px;
+    background-color: gray;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+}
