@@ -29,6 +29,8 @@
 ////////////////////////////////////////////////////////////////////
 const div_chat = document.querySelector(".div-chat");
 
+var enable_reply = true;
+
 function writeToChat(message,right,length){
     let newMessage = document.createElement("div");
     
@@ -74,7 +76,13 @@ const websocketSendLoad = () => {
         console.log("websocketSend close");
     }
     websocketSend.onmessage = function(evt) {
-        writeToChat(evt.data);
+        if (enable_reply){
+            console.log("replying now =",enable_reply);
+            writeToChat(evt.data);
+        } else {
+            console.log("replying disabled, server reply =",evt.data);
+        }
+        enable_reply=true;
     }
     websocketSend.onerror = function(evt) {
         console.log("websocketSend Error");
@@ -83,8 +91,10 @@ const websocketSendLoad = () => {
     // console.log("websocket func started");
 }
 
-function sendMessage() {
-    websocketSend.send(input_text.value);
+function sendMessage(text) {
+    let inText = (text !== undefined)?text:(input_text.value);
+    websocketSend.send(inText);
+    // console.log("1");
 }
 
 function websocketSendClose() {
@@ -153,7 +163,6 @@ btn_send.addEventListener("click", () => {
                     //     console.log("nealo")
                     // })
             // }
-            // blya();
         }
     } else {
         alert("ОШИБКА: Пустое сообщение");
@@ -186,6 +195,46 @@ btn_geo.addEventListener("click", () => {
         alert("Геолокация не поддержана!");
     } else {
         navigator.geolocation.getCurrentPosition(geoSuccess,geoError);
+        // enable_reply=false;
+        console.log("en_reply now 0 =",enable_reply);
+        // какое сообщение нужно серверу?
+        // Создаем promise
+
+        // const myPromise = new Promise((resolve, reject) => {
+        //     if (true) {
+        //         resolve("Успешное выполнение promise");
+        //     } else {
+        //         reject("Неуспешное выполнение promise");
+        //     }
+        // });
+        
+        enable_reply=false;
+        sendMessage("Моя геолокация");
+
+        // Выполняем promise
+        // myPromise
+            // .then(() => {
+            //     console.log("en_reply now 1 =",enable_reply);
+            //     return true;
+            // })
+            // .then(() => {
+            //     console.log("en_reply now 2 =",enable_reply);
+            //     console.log('Обрабатываем resolve');
+            // })
+            // .then(() => {
+            //     enable_reply=true;
+            //     console.log("en_reply now 3 =",enable_reply);
+            //     return true;
+            // })
+            //     .catch((error) => {
+            //     console.log('Обрабатываем reject', error);
+            // })
+            //     .finally(() => {
+            //     console.log('Выполняется всегда');
+            // });
+
+        // const PromiseMe = sendMessage("Моя геолокация");
+        console.log("en_reply now 4 =",enable_reply);
     }
 });
 
